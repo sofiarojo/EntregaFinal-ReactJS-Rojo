@@ -1,0 +1,41 @@
+.item-container {
+    background-color: #f0eade;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    height: 480px;
+    margin: 20px auto;
+}
+
+.item-container p {
+    margin: 10px 0;
+    color: #7e7e7e;
+}
+
+.imagen {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+}
+
+.item-container .btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.item-container .btn:hover {
+    background-color: #45a049;
+}
+
+.item-container .btn:focus {
+    outline: none;
+}

@@ -1,0 +1,22 @@
+container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pastel-color {
+    background-color: #aa4caf;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+}
+
+.pastel-color:hover {
+    background-color: #9745a0;
+}
+
+.pastel-color:focus {
+    outline: none;
+}

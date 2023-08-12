@@ -1,0 +1,35 @@
+.menu {
+    background-color:#1E1E1E;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    margin-left: 40px;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+}
+
+.logo {
+    width: 55px;
+    height: 55px;
+    margin-left: 10px;
+    align-items: center;  
+}
+
+
+
+
