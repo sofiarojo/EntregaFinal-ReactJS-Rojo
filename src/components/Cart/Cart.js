@@ -11,11 +11,6 @@ export const Cart = () => {
       <h1>VERIFICA TU PEDIDO!</h1>
       <hr />
       <div className="cart-table">
-        <div className="cart-header">
-          <div className="cart-header-item">Imagen</div>
-          <div className="cart-header-item">Nombre</div>
-          <div className="cart-header-item">Total</div>
-        </div>
         {cart.map((items) => (
           <div key={items.id} className="cart-row">
             <div className="cart-item">
