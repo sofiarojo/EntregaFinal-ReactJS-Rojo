@@ -1,18 +1,20 @@
 import { addDoc, doc, getDoc, updateDoc, collection, getFirestore } from 'firebase/firestore';
-import { useContext, useState } from 'react';
+import {  useState, useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 
+
 export const Checkout = () => {
-    const cartContext = useContext(CartContext);
+  const cartContext = useContext(CartContext);
     const [orderId, setOrderId] = useState();
     const [buyer, setBuyer] = useState({
         Nombre: "",
         Email: "",
         Telefono: ""
-    });
+    })
     const {Nombre, Email, Telefono} = buyer;
 
     const {cart} = useContext(CartContext);
+
     const handleInputChange = (e) => {
     const { name, value } = e.target;
     
@@ -46,7 +48,7 @@ export const Checkout = () => {
 
     const isStockSufficient = await checkStockSufficient();
     if (!isStockSufficient) {
-      alert("Lo siento pero no hay suficiente stock para completar la compra.");
+      alert("El carrito está vacío");
       return;
     }
 
@@ -60,7 +62,7 @@ export const Checkout = () => {
   const updateProductStock = async () => {
     const querydb = getFirestore();
     for (const product of cart) {
-      const itemDoc = doc(querydb, "products", product.id);
+      const itemDoc = doc(querydb, "items", product.id);
       const itemSnapshot = await getDoc(itemDoc);
       if (itemSnapshot.exists()) {
         const stockNuevo = itemSnapshot.data().stock - product.cant;
@@ -96,7 +98,7 @@ export const Checkout = () => {
 
   return (
     <div className="checkout-container">
-      <hr />
+      <hr/>
       {!orderId && (
         <form onSubmit={handleSubmit} className="checkout-form">
           <h1>Ingresa tus Datos:</h1>
@@ -109,7 +111,7 @@ export const Checkout = () => {
             onChange={handleInputChange}
             required
           />
-
+          <br></br>
           <label className="form-label">Email:</label>
           <input
             type="email"
@@ -119,29 +121,29 @@ export const Checkout = () => {
             onChange={handleInputChange}
             required
           />
-
+          <br></br>
           <label className="form-label">Teléfono:</label>
           <input
-            type="tel"
+            type="number"
             name="Telefono"
             placeholder="Teléfono"
             value={Telefono}
             onChange={handleInputChange}
             required
           />
-
+          <br></br>
           <input type="submit" value="Confirmar Compra" className="submit-button" />
         </form>
       )}
+
       {orderId && (
         <div className="order-success">
-          <h1>Felicitaciones tu compra se realizo con exito</h1> 
-          <br />
-          <h2>TU TICKET DE COMPRA ES:</h2>
-          <h2>{orderId}</h2>
-          <br />
-          <br />
-          <p>En breve nos pondremos en contacto contigo!</p>
+          <h1> ¡Tu compra se realizo con éxito! </h1> 
+          <br/>
+          <h2>TU ID DE COMPRA ES: {orderId} </h2>
+          <br/>
+          <br/>
+          <h3>¡En breve nos pondremos en contacto contigo!</h3>
         </div>
       )};
     </div>

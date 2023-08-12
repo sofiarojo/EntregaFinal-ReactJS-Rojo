@@ -6,14 +6,14 @@ import ItemListContainer from '../src/components/ItemListContainer/ItemListConta
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import { Cart } from '../src/components/Cart/Cart';
 import Error from './components/Error';
-import { CartContext } from './context/CartContext';
+import CartProvider from './context/CartContext';
 import { Checkout } from './components/Checkout/Checkout';
 
 
 function App() {
   return (
     <div>
-      <CartContext.Provider value={[]}>
+      <CartProvider>
         <BrowserRouter>
           <NavBar/>
           <h1 className='marca'> Mundo Yogui </h1>
@@ -22,11 +22,11 @@ function App() {
             <Route path={'/category/:id'} element= {<ItemListContainer/>}/>
             <Route path={'/item/:id'} element= {<ItemDetailContainer/>}/>
             <Route path={'/cart'} element={<Cart/>}/>
-            <Route path="/checkout" element={<Checkout/>} />
+            <Route path={"/checkout"} element={<Checkout/>}/>
             <Route path={'*'} element={<Error/>}/>
           </Routes>
         </BrowserRouter>
-      </CartContext.Provider>
+      </CartProvider>
     </div>
   );
 }
