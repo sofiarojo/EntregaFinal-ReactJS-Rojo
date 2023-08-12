@@ -1,23 +1,23 @@
+import './Checkout.css';
 import { addDoc, doc, getDoc, updateDoc, collection, getFirestore } from 'firebase/firestore';
-import {  useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
-
 
 export const Checkout = () => {
   const cartContext = useContext(CartContext);
-    const [orderId, setOrderId] = useState();
-    const [buyer, setBuyer] = useState({
-        Nombre: "",
-        Email: "",
-        Telefono: ""
-    })
-    const {Nombre, Email, Telefono} = buyer;
+  const [orderId, setOrderId] = useState();
+  const [buyer, setBuyer] = useState({
+    Nombre: "",
+    Email: "",
+    Telefono: ""
+  });
+  const { Nombre, Email, Telefono } = buyer;
 
-    const {cart} = useContext(CartContext);
+  const { cart } = useContext(CartContext);
 
-    const handleInputChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    
+
     if (name === "Nombre") {
       if (/^[A-Za-z]+$/.test(value) || value === "") {
         setBuyer({
@@ -25,17 +25,14 @@ export const Checkout = () => {
           [name]: value,
         });
       }
-    } 
-
-    else if (name === "Telefono") {
+    } else if (name === "Telefono") {
       if (/^[0-9]*$/.test(value) || value === "") {
         setBuyer({
           ...buyer,
           [name]: value,
         });
       }
-    } 
-    else {
+    } else {
       setBuyer({
         ...buyer,
         [name]: value,
@@ -46,9 +43,14 @@ export const Checkout = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!Nombre || !Email || !Telefono) {
+      alert("Por favor completa todos los campos de información del comprador.");
+      return;
+    }
+
     const isStockSufficient = await checkStockSufficient();
     if (!isStockSufficient) {
-      alert("El carrito está vacío");
+      alert("El carrito está vacío o no hay suficiente stock para algún producto.");
       return;
     }
 
@@ -98,7 +100,7 @@ export const Checkout = () => {
 
   return (
     <div className="checkout-container">
-      <hr/>
+      <hr />
       {!orderId && (
         <form onSubmit={handleSubmit} className="checkout-form">
           <h1>Ingresa tus Datos:</h1>
@@ -111,7 +113,7 @@ export const Checkout = () => {
             onChange={handleInputChange}
             required
           />
-          <br></br>
+          <br />
           <label className="form-label">Email:</label>
           <input
             type="email"
@@ -121,7 +123,7 @@ export const Checkout = () => {
             onChange={handleInputChange}
             required
           />
-          <br></br>
+          <br />
           <label className="form-label">Teléfono:</label>
           <input
             type="number"
@@ -131,21 +133,21 @@ export const Checkout = () => {
             onChange={handleInputChange}
             required
           />
-          <br></br>
+          <br />
           <input type="submit" value="Confirmar Compra" className="submit-button" />
         </form>
       )}
 
       {orderId && (
         <div className="order-success">
-          <h1> ¡Tu compra se realizo con éxito! </h1> 
-          <br/>
-          <h2>TU ID DE COMPRA ES: {orderId} </h2>
-          <br/>
-          <br/>
+          <h1>¡Tu compra se realizó con éxito!</h1>
+          <br />
+          <h2>El ID de tu compra es: {orderId}</h2>
+          <br />
+          <br />
           <h3>¡En breve nos pondremos en contacto contigo!</h3>
         </div>
-      )};
+      )}
     </div>
   );
 };
