@@ -104,7 +104,7 @@ export const Checkout = () => {
       {!orderId && (
         <form onSubmit={handleSubmit} className="checkout-form">
           <h1>Ingresa tus Datos:</h1>
-          <label className="form-label">Nombre:</label>
+          <label className="form-label"></label>
           <input
             type="text"
             name="Nombre"
@@ -114,7 +114,7 @@ export const Checkout = () => {
             required
           />
           <br />
-          <label className="form-label">Email:</label>
+          <label className="form-label"></label>
           <input
             type="email"
             name="Email"
@@ -124,7 +124,7 @@ export const Checkout = () => {
             required
           />
           <br />
-          <label className="form-label">Teléfono:</label>
+          <label className="form-label"></label>
           <input
             type="number"
             name="Telefono"
