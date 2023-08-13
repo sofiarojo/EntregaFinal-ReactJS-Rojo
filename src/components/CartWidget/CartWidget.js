@@ -9,11 +9,15 @@ const CartWidget = () => {
     const { getQuantity } = useContext(CartContext);
 
     return ( 
-        <Link to = './cart'>
-            <div className="carrito">
-                <h4> <HiShoppingCart/> <button style={{ backgroundColor: '#0f0e17', color: '#ff8906', border: 'none' }}>{getQuantity()}</button> </h4>
-            </div>
-        </Link>
+        <Link to="./cart" className="cart-link">
+        <div className="carrito">
+            <h4>
+                <HiShoppingCart className="cart-icon" />
+                <button className="cart-button">{getQuantity()}</button>
+            </h4>
+        </div>
+    </Link>
+
     );
 };
 

@@ -54,10 +54,14 @@ input[type="number"] {
 
 .order-success h1 {
   color: #27ae60;
+  margin-bottom: 20px;
 }
 
-.order-success h2,
-.order-success h3 {
+.order-success h2 {
   color: #3498db;
   margin-bottom: 10px;
+}
+
+.order-success h3 {
+  color: #ffb347;
 }

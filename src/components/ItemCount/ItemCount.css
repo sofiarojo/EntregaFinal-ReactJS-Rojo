@@ -20,3 +20,11 @@ container {
 .pastel-color:focus {
     outline: none;
 }
+
+.d-grid.gap-2 {
+    margin-bottom: 15px;
+}
+
+.btn {
+    width: 100%;
+}

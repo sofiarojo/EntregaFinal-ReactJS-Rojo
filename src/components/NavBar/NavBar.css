@@ -1,5 +1,5 @@
 .menu {
-    background-color:#1E1E1E;
+    background-color: #1E1E1E;
     color: white;
     display: flex;
     align-items: center;
@@ -12,24 +12,34 @@
     display: flex;
     margin: 0;
     padding: 0;
+    font-size: 20px;
 }
 
 .menu ul li {
     margin-left: 40px;
+    transition: color 0.3s ease;
 }
 
-.link {
+.menu ul li:hover {
+    color: #b0e57c;
+}
+
+.menu .link {
     text-decoration: none;
     color: white;
 }
 
-.logo {
+.menu .logo {
     width: 55px;
     height: 55px;
     margin-left: 10px;
-    align-items: center;  
+    align-items: center;
 }
 
+.menu .navbar-right {
+    display: flex;
+    align-items: center;
+}
 
 
 

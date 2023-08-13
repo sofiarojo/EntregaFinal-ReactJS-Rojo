@@ -21,6 +21,7 @@ export const Cart = () => {
                 alt={items.title}
                 className="cart-thumbnail"
               />
+              <p className="cart-title">{items.title}</p>
             </div>
             <div className="cart-details">{items.title}</div>
             <div className="cart-details">$ {items.price}</div>
