@@ -90,7 +90,7 @@ export const Checkout = () => {
 
   const generateOrder = async (data) => {
     const querydb = getFirestore();
-    const queryCollection = collection(querydb, 'Orders');
+    const queryCollection = collection(querydb, "Orders");
     localStorage.clear();
 
     const order = await addDoc(queryCollection, data);
@@ -113,7 +113,6 @@ export const Checkout = () => {
             onChange={handleInputChange}
             required
           />
-          <br />
           <label className="form-label"></label>
           <input
             type="email"
@@ -123,7 +122,6 @@ export const Checkout = () => {
             onChange={handleInputChange}
             required
           />
-          <br />
           <label className="form-label"></label>
           <input
             type="number"
@@ -133,7 +131,6 @@ export const Checkout = () => {
             onChange={handleInputChange}
             required
           />
-          <br />
           <input type="submit" value="Confirmar Compra" className="submit-button" />
         </form>
       )}
@@ -141,10 +138,7 @@ export const Checkout = () => {
       {orderId && (
         <div className="order-success">
           <h1>¡Tu compra se realizó con éxito!</h1>
-          <br />
-          <h2>El ID de tu compra es: {orderId}</h2>
-          <br />
-          <br />
+          <h2>El ID de tu compra es: {orderId} </h2>
           <h3>¡En breve nos pondremos en contacto contigo!</h3>
         </div>
       )}
