@@ -25,7 +25,7 @@ export const CartProvider = ({children}) => {
             if (existingItem) {
                 const updatedCart = prevCart.map((prevItem) =>
                     prevItem.id === item.id
-                        ? { ...prevItem, cant: prevItem.cant + cant }
+                        ? { ...prevItem, cant: cant }
                         : prevItem
                 );
                 return updatedCart;

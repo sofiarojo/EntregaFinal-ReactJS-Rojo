@@ -8,7 +8,7 @@ const ItemDetail = ({item}) => {
   const {addItem} = useContext(CartContext)
   
   const handleOnAdd = (count) => {
-    addItem({ id: item.id, price: item.price, title: item.name, img: item.img }, count)
+    addItem({ id: item.id, price: item.price, title: item.title, img: item.img }, count)
   };
 
   return (
