@@ -16,7 +16,6 @@ function App() {
       <CartProvider>
         <BrowserRouter>
           <NavBar/>
-          <h1 className='marca'> Mundo Yogui </h1>
           <Routes>
             <Route path={'/'} element= {<ItemListContainer/>}/>
             <Route path={'/category/:id'} element= {<ItemListContainer/>}/>

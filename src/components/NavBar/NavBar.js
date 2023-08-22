@@ -6,7 +6,7 @@ const NavBar= () => {
   return (
   <nav className="menu">
     <div className="navbar-left">
-      <img className="logo" src={process.env.PUBLIC_URL + '/Yogaintro-favicon.png'} alt="Logo"/>
+      <img className="logo" src={process.env.PUBLIC_URL + '/Yogaintro-favicon.png'} alt="Logo"/> <span className='title'> Mundo Yogui </span>
     </div>
     <div className="navbar-right">
       <ul>

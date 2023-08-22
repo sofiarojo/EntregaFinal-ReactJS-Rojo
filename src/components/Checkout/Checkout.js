@@ -113,7 +113,7 @@ export const Checkout = () => {
         </form>
       ) : (
         <div className="order-success">
-          <h1>¡Tu compra se realizó con éxito!</h1>
+          <h1>✨¡Tu compra se realizó con éxito!✨</h1>
           <h2>El ID de tu compra es: {orderId} </h2>
           <h3>¡En breve nos pondremos en contacto contigo!</h3>
         </div>
