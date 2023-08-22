@@ -6,7 +6,7 @@
     text-align: center;
     width: 300px;
     height: 480px;
-    margin: 20px auto;
+    margin: 30px 40px;
 }
 
 .item-container p {
@@ -17,8 +17,8 @@
 .imagen {
     margin-bottom: 10px;
     border-radius: 5px;
-    width: 350px;
-    height: 350px;
+    width: 100%;
+    height: auto;
     object-fit: cover;
 }
 

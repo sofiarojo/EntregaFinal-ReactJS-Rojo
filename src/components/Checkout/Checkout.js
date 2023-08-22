@@ -81,7 +81,6 @@ export const Checkout = () => {
 
   return (
     <div className="checkout-container">
-      <hr />
       {!orderId ? (
         <form onSubmit={handleSubmit} className="checkout-form">
           <h1>Ingresa tus Datos:</h1>
