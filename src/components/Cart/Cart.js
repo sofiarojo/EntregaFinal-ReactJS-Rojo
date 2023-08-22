@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import './Cart.css';
 
 export const Cart = () => {
@@ -16,6 +17,22 @@ export const Cart = () => {
     if (item.cant > 1) {
       addItem(item, item.cant - 1);
     }
+  };
+
+  const handleRemoveItem = (itemId) => {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción eliminará el producto de tu carrito.',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeItem(itemId);
+        Swal.fire('¡Eliminado!', 'El producto ha sido eliminado del carrito.', 'success');
+      }
+    });
   };
 
   return (
@@ -49,7 +66,7 @@ export const Cart = () => {
             </div>
             <div className="cart-details">$ {item.price * item.cant}</div>
             <div className="cart-details">
-              <button onClick={() => removeItem(item.id)}>
+              <button onClick={() => handleRemoveItem(item.id)}>
                 Eliminar Producto
               </button>
             </div>

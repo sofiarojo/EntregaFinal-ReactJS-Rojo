@@ -1,7 +1,8 @@
-import './Checkout.css';
-import {addDoc,doc,getDoc,collection,getFirestore} from 'firebase/firestore';
-import { useState, useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CartContext } from '../../context/CartContext';
+import Swal from 'sweetalert2';
+import { addDoc, doc, getDoc, collection, getFirestore } from 'firebase/firestore';
+import './Checkout.css';
 
 export const Checkout = () => {
   const cartContext = useContext(CartContext);
@@ -46,8 +47,18 @@ export const Checkout = () => {
     const data = { buyer, cart, total, dia };
 
     const orderId = await generateOrder(data);
-    setOrderId(orderId);
-    cartContext.clearCart();
+
+    Swal.fire({
+      title: '¡Tu compra se realizó con éxito!',
+      text: `El ID de tu compra es: ${orderId}`,
+      icon: 'success',
+      confirmButtonText: 'Ok',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        cartContext.clearCart();
+        setOrderId(orderId);
+      }
+    });
   };
 
   const validateCart = async () => {
@@ -108,15 +119,9 @@ export const Checkout = () => {
             onChange={handleInputChange}
             required
           />
-          <input type="submit" value="Confirmar Compra" className="submit-button" />
+          <input type="submit" value="Confirmar Compra" className="submit-button"/>
         </form>
-      ) : (
-        <div className="order-success">
-          <h1>✨¡Tu compra se realizó con éxito!✨</h1>
-          <h2>El ID de tu compra es: {orderId} </h2>
-          <h3>¡En breve nos pondremos en contacto contigo!</h3>
-        </div>
-      )}
+      ) : null}
     </div>
   );
 };
