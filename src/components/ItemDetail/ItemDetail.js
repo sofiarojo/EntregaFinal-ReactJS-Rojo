@@ -6,6 +6,7 @@ import { useContext } from "react";
 
 const ItemDetail = ({item}) => {
   const {addItem} = useContext(CartContext)
+  
   const handleOnAdd = (count) => {
     addItem({ id: item.id, price: item.price, title: item.name, img: item.img }, count)
   };

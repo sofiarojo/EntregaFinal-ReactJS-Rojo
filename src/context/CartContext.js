@@ -3,18 +3,17 @@ import { createContext, useEffect, useState, useRef } from "react";
 export const CartContext = createContext();
 
 export const CartProvider = ({children}) => {
-    const [cart, setCart] = useState ([])
+    const [cart, setCart] = useState ([]);
     const initialized = useRef(false);
 
     useEffect(() => {
-        const cartFromStorage = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartFromStorage = JSON.parse(localStorage.getItem( "cart")) || [];
         setCart(cartFromStorage);
     }, []);
 
     useEffect(() => {
         if (initialized.current) {
-            localStorage.setItem('cart', JSON.stringify(cart));
-            console.log("se ejecuta esto");
+            localStorage.setItem("cart", JSON.stringify(cart));
         } else {
             initialized.current = true;
         }
@@ -38,12 +37,10 @@ export const CartProvider = ({children}) => {
 
     const removeItem = (itemId) => {
         setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
-        console.log("entro en remove");
     };
 
     const clearCart = () => {
         setCart([]);
-        console.log("entro en Clear");
     };
 
     const getQuantity = () => {
