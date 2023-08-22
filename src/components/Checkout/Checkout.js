@@ -47,7 +47,6 @@ export const Checkout = () => {
     const total = cart.reduce((acum, unItem) => acum + unItem.price * unItem.cant, 0);
     const dia = new Date();
     const data = { buyer, cart, total, dia };
-
     const orderId = await generateOrder(data);
 
     Swal.fire({
@@ -79,6 +78,7 @@ export const Checkout = () => {
         }
       }
     }
+
     return {
       isValid: true,
       message: ""
@@ -88,8 +88,8 @@ export const Checkout = () => {
   const generateOrder = async (data) => {
     const querydb = getFirestore();
     const queryCollection = collection(querydb, "Orders");
-
     const order = await addDoc(queryCollection, data);
+    
     return order.id;
   };
 
