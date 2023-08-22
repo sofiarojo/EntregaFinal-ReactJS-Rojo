@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { CartContext } from '../../context/CartContext';
 import Swal from 'sweetalert2';
 import { addDoc, doc, getDoc, collection, getFirestore } from 'firebase/firestore';
+import { useNavigate } from "react-router-dom";
 import './Checkout.css';
 
 export const Checkout = () => {
@@ -14,6 +15,7 @@ export const Checkout = () => {
   });
 
   const { cart } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -57,6 +59,7 @@ export const Checkout = () => {
       if (result.isConfirmed) {
         cartContext.clearCart();
         setOrderId(orderId);
+        navigate("/");
       }
     });
   };
